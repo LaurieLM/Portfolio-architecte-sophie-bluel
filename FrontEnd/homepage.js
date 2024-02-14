@@ -1,31 +1,75 @@
-async function getWorks() {
-    const works = await fetch('http://localhost:5678/api/works');
-    const reponse = await works.json();
+async function app() {
+  // Récupération des travaux
+  const reponse = await fetch("http://localhost:5678/api/works");
+  const works = await reponse.json();
 
-    console.log(reponse);
+  // Affichage des travaux
+  async function displayWorks(element) {
+    for (let i = 0; i < element.length; i++) {
+      const projects = element[i];
 
-    return reponse;
+      const gallery = document.querySelector(".gallery");
+      const figure = document.createElement("figure");
+
+      const imgElement = document.createElement("img");
+      imgElement.src = projects.imageUrl;
+
+      const titleElement = document.createElement("figcaption");
+      titleElement.innerText = projects.title;
+
+      gallery.appendChild(figure);
+      figure.appendChild(imgElement);
+      figure.appendChild(titleElement);
+    }
+  }
+
+  // Filtres
+  const btnDefault = document.querySelector("#default");
+  const btnObjets = document.querySelector("#objets");
+  const btnAppartements = document.querySelector("#appart");
+  const btnHotelsRestaurants = document.querySelector("#hotels");
+
+  async function filterDefault() {
+    btnDefault.addEventListener("click", function () {
+      displayWorks(works);
+    });
+  }
+
+  async function filterObjets() {
+    btnObjets.addEventListener("click", function () {
+      const projectsObjets = works.filter(function (figure) {
+        return figure.categoryId === 1;
+      });
+      document.querySelector(".gallery").innerHTML = "";
+      displayWorks(projectsObjets);
+    });
+  }
+
+  async function filterAppartements() {
+    btnAppartements.addEventListener("click", function () {
+      const projectsAppartements = works.filter(function (figure) {
+        return figure.categoryId === 2;
+      });
+      document.querySelector(".gallery").innerHTML = "";
+      displayWorks(projectsAppartements);
+    });
+  }
+
+  async function filterHotelsRestaurants() {
+    btnHotelsRestaurants.addEventListener("click", function () {
+      const projectsHotelsRestaurants = works.filter(function (figure) {
+        return figure.categoryId === 3;
+      });
+      document.querySelector(".gallery").innerHTML = "";
+      displayWorks(projectsHotelsRestaurants);
+    });
+  }
+
+  displayWorks(works);
+  filterDefault();
+  filterObjets();
+  filterAppartements();
+  filterHotelsRestaurants();
 }
 
-async function displayWorks() {
-    const works = await getWorks();
-        for (let i = 0; i < works.length; i++) {
-            const projects = works[i];
-
-            const gallery = document.querySelector(".gallery");
-            const figure = document.createElement("figure");
-
-            const imgElement = document.createElement("img");
-            imgElement.src = projects.imageUrl;
-
-            const titleElement = document.createElement("figcaption");
-            titleElement.innerText = projects.title;
-
-            gallery.appendChild(figure);
-            figure.appendChild(imgElement);
-            figure.appendChild(titleElement);
-        }
-}
-
-displayWorks();
-
+app();
