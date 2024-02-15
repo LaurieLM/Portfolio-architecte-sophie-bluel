@@ -75,7 +75,6 @@ async function app() {
 app();
 
 // Enregistrement token
-
 const token = window.sessionStorage.getItem("userToken");
 const filters = document.querySelector(".filters");
 
@@ -86,3 +85,11 @@ if (token) {
   document.querySelector(".filters").style.display = "none";
   document.querySelector("#modifier").style.display = "block";
 }
+
+// Suppression token
+const logout = document.querySelector("#logout");
+
+logout.addEventListener("click", function () {
+  window.sessionStorage.clear();
+  document.location.href = "http://127.0.0.1:5501/FrontEnd/";
+});
