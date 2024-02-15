@@ -10,21 +10,29 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
 		rel="stylesheet">
 	<meta name="description" content="">
+
 	<link rel="stylesheet" href="./assets/style.css">
+
+	<script src="https://kit.fontawesome.com/b47249feaf.js" crossorigin="anonymous"></script>
+
 	<script src="homepage.js" defer></script>
 </head>
 
 <body>
 	<header>
-		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-		<nav>
-			<ul>
-				<li>projets</li>
-				<li>contact</li>
-				<li id="login"><a href="./login.html">login</a></li>
-				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-			</ul>
-		</nav>
+		<p id="edition"><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>
+		<div>
+			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+			<nav>
+				<ul>
+					<li>projets</li>
+					<li>contact</li>
+					<li id="login"><a href="./login.html">login</a></li>
+					<li id="logout"><a href="#">logout</a></li>
+					<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+				</ul>
+			</nav>
+		</div>
 	</header>
 	<main>
 		<section id="introduction">
@@ -43,7 +51,10 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<h2>Mes Projets</h2>
+			<div id="portfolio_edition">
+				<h2>Mes Projets</h2>
+				<a href="#" id="modifier"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
+			</div>
 			<div class="filters">
 				<button id="default">Tous</button>
 				<button id="objets">Objets</button>

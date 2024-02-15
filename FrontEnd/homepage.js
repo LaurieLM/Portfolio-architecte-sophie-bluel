@@ -73,3 +73,16 @@ async function app() {
 }
 
 app();
+
+// Enregistrement token
+
+const token = window.sessionStorage.getItem("userToken");
+const filters = document.querySelector(".filters");
+
+if (token) {
+  document.querySelector("#edition").style.display = "block";
+  document.querySelector("#login").style.display = "none";
+  document.querySelector("#logout").style.display = "block";
+  document.querySelector(".filters").style.display = "none";
+  document.querySelector("#modifier").style.display = "block";
+}
