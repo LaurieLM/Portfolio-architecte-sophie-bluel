@@ -16,6 +16,7 @@
 	<script src="https://kit.fontawesome.com/b47249feaf.js" crossorigin="anonymous"></script>
 
 	<script src="homepage.js" defer></script>
+	<script src="modal.js" defer></script>
 </head>
 
 <body>
@@ -53,7 +54,17 @@
 		<section id="portfolio">
 			<div id="portfolio_edition">
 				<h2>Mes Projets</h2>
-				<a href="#" id="modifier"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
+				<a href="#modal1" id="modifier"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
+				<aside id="modal1" class="modal" aria-hidden="true">
+					<div class="modal-wrapper">
+						<button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
+						<div class="modal-content">
+							<h2>Galerie Photo</h2>
+							<div class="modal-gallery"></div>
+							<button class="add"><a href="#">Ajouter une photo</a></button>
+						</div>
+					</div>
+				</aside>
 			</div>
 			<div class="filters">
 				<button id="default">Tous</button>
