@@ -27,3 +27,30 @@ async function app() {
 }
 
 app();
+
+let modal = null;
+
+const openModal = function (e) {
+  e.preventDefault();
+  const target = document.querySelector("#modal1");
+  target.style.display = "flex";
+  modal = target;
+  modal.addEventListener("click", closeModal);
+  modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
+  modal
+    .querySelector(".js-modal-stop")
+    .addEventListener("click", stopPropagation);
+};
+
+const closeModal = function (e) {
+  e.preventDefault();
+  modal.style.display = "none";
+};
+
+const stopPropagation = function (e) {
+  e.stopPropagation();
+};
+
+document.querySelectorAll(".js-modal").forEach((a) => {
+  a.addEventListener("click", openModal);
+});

@@ -317,6 +317,10 @@ footer nav ul {
 
 /* MODAL */
 
+#modal1 {
+	display: none;
+}
+
 .modal {
 	position: fixed;
 	display: flex;
